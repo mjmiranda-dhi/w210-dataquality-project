@@ -3,6 +3,9 @@
 ##Data Quality / Outlier Detection in Hierarchical Data
 _Burt, D.M. | Miranda, M.J. | Shen, Max | Weeks, Timothy_
 
+&nbsp;
+&nbsp;
+
 ### Data Set: Best Buy Categories
 _Source: Best Buy, Inc. (via Best Buy API)_
 https://bestbuyapis.github.io/api-documentation/#categories-api
