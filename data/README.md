@@ -6,16 +6,17 @@ _Burt, D.M. | Miranda, M.J. | Shen, Max | Weeks, Timothy_
 &nbsp;
 &nbsp;
 
-### Data Set: Best Buy Categories
+### Data Set: Best Buy
 _Source: Best Buy, Inc. (via Best Buy API)_
 https://bestbuyapis.github.io/api-documentation/#categories-api
 
 __Stats:__
-* 3,733 unique category identifiers
-* formats available: JSON, XML, CSV
+* 4,640 unique category identifiers
+* formats available: CSV (comma-delimited and tab-delimited versions)
 
 __Primary elements:__
-* Category name
 * Category ID
-* Subcategory name
-* Subcategory ID
+* Category Name
+* Subcategory IDs
+* Subcategory Names
+_more information in data/BestBuy directory_
