@@ -1,11 +1,14 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>Minimal Django File Upload Example</title>
+        <link rel="stylesheet" href="{% static 'css/dq.css' %}">
     </head>
 
     <body>
+       <h1>TESTING CSS AND BOOTSTRAP</h1>
         <!-- Upload form. Note enctype attribute! -->
         <form action="{% url "dq" %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
