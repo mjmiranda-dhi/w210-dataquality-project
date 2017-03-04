@@ -14,3 +14,6 @@ Best Buy categories have a root of _cat00000_ (name: "Best Buy").  Each node in 
 
 ### Products
 The categories the products are assigned to can be found in the categoryPathId and categoryPathName columns.  The original data from Best Buy provided a chain of IDs from the assigned-node category back to the root category.  In the CSV/TSV files, however, only the assigned-node category is given; the path back to the root is available using a join to the _categories_ data on product.categoryPathId = category.categoryId.
+
+### Product Walkback
+Due to popular demand, there is now a _"walkback"_ version of the __product__ data set.  This puts the path back to the root into the _product_ data.  Check out the documentation in the _walkback_ folder for more information.
