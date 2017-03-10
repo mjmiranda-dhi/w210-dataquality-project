@@ -21,8 +21,19 @@ def generate_col_summary(dim_df):
 
 	return sum_df
 
-
-
+def generate_size_features(summary_df, feature_df):
+	# for every field value, count number of associated records
+	for i, field_name in enumerate(summary_df.FIELDS):
+		# feature only meaningful for fields with more than 1 unique value
+		if summary_df.ix[i,'UNQ_VALUES'] > 1:
+			# normalize by median
+			size_series = (feature_df.groupby(field_name).size()).fillna(0) - summary_df.ix[i,'SZ_50%']
+			# only outliers below the median will be helpful
+			size_series.loc[(size_series > 0),]  = 0
+			# join to feature df
+			size_df = size_series.to_frame(name=field_name + '_SIZE')
+			feature_df = feature_df.merge(size_df, how='left',left_on=field_name, right_index=True)
+	return feature_df
 
 def generate_cumulative_size(summary_df, feature_df):
 	start = 0
@@ -35,11 +46,9 @@ def generate_cumulative_size(summary_df, feature_df):
 			size_series = feature_df.groupby(field_list)[summary_df.FIELDS[i+1]].nunique(dropna=False)
 			series_med = size_series.median()
 			size_series = (size_series).fillna(0) - series_med
-			print(size_series.max())
+			# print(size_series.max())
 			size_series.loc[(size_series < 0),]  = 0
-			print(size_series.max())
+			# print(size_series.max())
 			size_df = size_series.to_frame(name='{0}-{1}_SIZE'.format(field_list[0],field_list[-1]))
 			feature_df = feature_df.merge(size_df, how='left',left_on=field_list, right_index=True)   
-			# if size_df.shape[0] == feature_df.shape[0]:
-			# 	break
 	return feature_df
