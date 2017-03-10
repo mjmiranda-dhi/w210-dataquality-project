@@ -11,13 +11,13 @@ print('Read file of shape: {0}'.format(input_df.shape))
 
 # summary_df contains one record per column in input
 # SZ_ values summarize number of records associated w/ each unique value
-summary_df = helper.generate_col_summary(input_df)
+summary_df = model_functions.generate_col_summary(input_df)
 
 # copy the input dataframe and append columns we will use as features
 # more feature-generating functions could be added here
 feature_df = input_df.copy(deep=True)
-feature_df = helper.generate_size_features(summary_df, feature_df)
-feature_df = helper.generate_cumulative_size(summary_df, feature_df)
+feature_df = model_functions.generate_size_features(summary_df, feature_df)
+feature_df = model_functions.generate_cumulative_size(summary_df, feature_df)
 
 # isolation forest model applied
 get_est_contamination = .025 #get from user input
