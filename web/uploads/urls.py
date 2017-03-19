@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url,include
 
 from . import views
 
@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^about$', views.about, name='about'),
     url(r'^contact$', views.contact, name='contact'),
     url(r'^dq/results$', views.results, name='results'),
+    url(r'^progressbarupload/', include('progressbarupload.urls'))
 ]

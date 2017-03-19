@@ -37,8 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'uploads.apps.UploadsConfig'
+    'uploads.apps.UploadsConfig',
+    'progressbarupload',
 ]
+
+# FOR FILEHANDLERS.. required by progressbarupload
+FILE_UPLOAD_HANDLERS = [
+    'progressbarupload.uploadhandler.ProgressBarUploadHandler',
+    'django.core.files.uploadhandler.MemoryFileUploadHandler',
+    'django.core.files.uploadhandler.TemporaryFileUploadHandler',
+]
+
+# Does not include jquery with use of progress bar (if you've already included jquery somewhere else)
+#PROGRESSBARUPLOAD_INCLUDE_JQUERY = False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

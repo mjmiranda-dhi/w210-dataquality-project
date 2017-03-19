@@ -11,6 +11,7 @@ def index(request):
     return HttpResponse("Hello, world, I am index in /uploads")
 
 def dq(request):
+    status = 200
     if request.method== 'POST':
         #this is the part of the view that gets called when someone sees the below upload dialog and attempts to POST a file
         form = DocumentForm(request.POST, request.FILES)
@@ -28,14 +29,16 @@ def dq(request):
             #filehandler.process_file(form_file)
     
             #return HttpResponse('file written to ' + destination)
-            return render(request, 'uploads/results.html', {'form':form})
+            return render(request, 'uploads/results.html', {'form':form, 'filename':filename}, status=status)
+        else:
+            print("This is some kind of error")
     else:
         #this is the part of the view that is brought up first (to show file upload dialog)
         form = DocumentForm()
-    return render(request, 'uploads/dq.html', {'form':form})
+    return render(request, 'uploads/dq.html', {'form':form}, status=status)
         
 def results(request):
-    return render(request, 'uploads/results.html', {'form':form})
+    return render(request, 'uploads/results.html', {'form':form, 'filename':filename}, status=status)
 
 def home(request):
     form = DocumentForm()
