@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'progressbarupload',
 ]
 
+STATIC_URL = '/static/'
+
 # FOR FILEHANDLERS.. required by progressbarupload
 FILE_UPLOAD_HANDLERS = [
     'progressbarupload.uploadhandler.ProgressBarUploadHandler',

@@ -1,18 +1,61 @@
 {% extends 'uploads/base.html' %}
 
+{% block javascript %}
+  <script>
+/*
+    $("#pre_viz").change(function() {
+        var previzthing = $(this).val();
+        console.log(previzthing);
+        $.ajax({
+            url: '{% url "preprocess_data" %}',
+            data: {
+                'pre_viz':'defpreviz' 
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (jQuery.isEmptyObject(data)) {
+                    alert("A user with this username already exists.");
+            },
+            complete: function() {
+                //this is what gets called before exiting out of the ajax call
+                //like finally
+               $('#pre_viz').innerHTML='dummy'; //this can be any html
+            }
+        }
+      });
+    });
+*/
+    $(document).ready(function() {
+      //$('#pre_viz').html('dummy');
+      //do some reading on settimeout(function, msecs) read up on webworkers
+      // $.ajax({
+      //       url: '{% url "preprocess_data" %}',
+      //       success: function (data) {
+      //         console.log(data);
+      //       },
+      //       complete: function() {
+      //           //this is what gets called before exiting out of the ajax call
+      //           //like finally
+      //          $('#pre_viz').innerHTML='dummy'; //this can be any html
+      //       }
+      //   });
+    });
+  </script>
+{% endblock javascript %}
+
 {% block content %}
-  <h1 class="cover-heading">RESULTS PAGE</h1>
-  <p class="lead">Erratum will analyze your file to find outliers and provide you with before and after visualizations of the hierarchy structure</p>
-  <p>
-      <!-- Upload form. Note enctype attribute! -->
-      <form action="{% url "dq" %}" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      <p>{{ form.non_field_errors }}</p>
-      <p>Uploaded file: {{filename}}</p>
-      <p>{{ form.file.label_tag }} {{ form.file.help_text }}</p>
-      {{ form.file.errors }}
-      {{ form.file }}
-      <p><input type="submit" value="Upload" class="btn btn-lg btn-default"/></p>
-  </form>
-  </p>
+  <div id="loading" class="clearfix">
+    Loading...
+    <br>
+    <img src="{{pre_data.pre_viz}}"/>
+    <br>
+    <img src="{{pre_data.pre_viz}}"/>
+  </div>
+  <div id="results" class="hidden clearfix">
+    <h1 class="cover-heading">RESULTS PAGE</h1>
+    <p>
+       <p>Uploaded file: {{filename}}</p>
+       <div id='pre_viz'>nothingpreviz</div>
+    </p>
+  </div>
 {% endblock %}

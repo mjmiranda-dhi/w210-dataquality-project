@@ -4,7 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from uploads.models import Document
 from uploads.forms import DocumentForm
 from . import filehandler #import write_file_to_disk, save_file
-
+from . import backend
+import time
 import datetime
 
 def index(request):
@@ -25,11 +26,14 @@ def dq(request):
             destination = 'tmp/' + filename
             filehandler.write_file_to_disk(form_file, destination)
 
+            pre_data = preprocess_data(request)
+            #pre_data = 'dummy pre data'
+
             #process file: maybe this will be the handler for showing the progress bar or something
             #filehandler.process_file(form_file)
-    
+
             #return HttpResponse('file written to ' + destination)
-            return render(request, 'uploads/results.html', {'form':form, 'filename':filename}, status=status)
+            return render(request, 'uploads/results.html', {'form':form, 'filename':filename, 'pre_data':pre_data})
         else:
             print("This is some kind of error")
     else:
@@ -49,3 +53,15 @@ def about(request):
 
 def contact(request):
     return render(request, 'uploads/contact.html', {})
+
+def preprocess_data(request):
+    #fake processing here
+    print("processing processing")
+    pre_data = backend.preprocess_data("testfilename")
+    print(pre_data)
+    data = {
+        'pre_viz': pre_data.get('viz'),
+        'pre_stats': pre_data.get('stats')
+    }
+    time.sleep(5)
+    return data
