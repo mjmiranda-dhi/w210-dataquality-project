@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'uploads.apps.UploadsConfig',
     'progressbarupload',
+    'rest_framework',
 ]
 
 STATIC_URL = '/static/'
@@ -49,6 +50,15 @@ FILE_UPLOAD_HANDLERS = [
     'django.core.files.uploadhandler.MemoryFileUploadHandler',
     'django.core.files.uploadhandler.TemporaryFileUploadHandler',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    )
+}
 
 # Does not include jquery with use of progress bar (if you've already included jquery somewhere else)
 #PROGRESSBARUPLOAD_INCLUDE_JQUERY = False

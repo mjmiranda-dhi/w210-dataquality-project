@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 
 from uploads.models import Document
 from uploads.forms import DocumentForm
@@ -7,6 +7,29 @@ from . import filehandler #import write_file_to_disk, save_file
 from . import backend
 import time
 import datetime
+
+#for running model
+from . import apply_model
+
+#for services (django rest framework)
+from rest_framework.views import APIView
+from rest_framework.response import Response 
+from rest_framework import status
+from rest_framework.renderers import JSONRenderer
+from rest_framework.decorators import api_view
+
+
+#for services - testing
+@api_view(['GET']) # , 'POST'])
+def backend_details(request):
+    if request.method == 'GET':
+        print("backend_details::get called")
+        return Response({
+            'test': 'this is a test string',
+            'junk': 'contains junk'
+        })
+
+#for services - testing
 
 def index(request):
     return HttpResponse("Hello, world, I am index in /uploads")
@@ -55,6 +78,13 @@ def contact(request):
     return render(request, 'uploads/contact.html', {})
 
 def preprocess_data(request):
+    form_file = request.FILES['file']
+    filename = form_file.name
+    filepath = 'tmp/' + filename
+
+    #lets try running the model here? does this need to be async?
+    apply_model.run(filepath)
+    print("DONE RUNNING MODEL")
     #fake processing here
     print("processing processing")
     pre_data = backend.preprocess_data("testfilename")

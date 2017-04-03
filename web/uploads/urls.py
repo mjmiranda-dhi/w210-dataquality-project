@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^contact$', views.contact, name='contact'),
     url(r'^dq/results$', views.results, name='results'),
     url(r'^progressbarupload/', include('progressbarupload.urls')),
-    url(r'^ajax/preprocess_data/$', views.preprocess_data, name='preprocess_data')
+    url(r'^ajax/preprocess_data/$', views.preprocess_data, name='preprocess_data'),
+    url(r'^svcs/$', views.backend_details),
 ]
