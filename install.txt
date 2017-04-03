@@ -1,0 +1,20 @@
+Conda
+=====
+
+Python3
+=======
+
+Django
+======
+
+
+Progress Bar Upload: https://github.com/ouhouhsami/django-progressbarupload
+===================
+install:
+pip install django-progressbarupload
+
+Django Rest Framework: http://www.django-rest-framework.org/
+=====================
+pip install djangorestframework
+pip install markdown       # Markdown support for the browsable API.
+pip install django-filter  # Filtering support
