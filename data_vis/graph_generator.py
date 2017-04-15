@@ -18,18 +18,14 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 from plotly.graph_objs import *
 plotly.offline.init_notebook_mode()
 
-
-#1 Load data and structure for further process
-#Please change your director for the input files
-input_data_pd = pd.read_csv("/Users/Maximus/Desktop/Master of Information and Data Science\
-/W210 Capstone/Attachments_201721/modified_input.csv", delimiter = ",")
+input_data_pd = pd.read_csv("/Users/mshen/Desktop/Python Supercode/Graph/modified_input.csv", delimiter = ",", encoding='cp857')
 
 input_data_pd = input_data_pd.replace(np.nan,'', regex=True)
 hierarchy_col = ['level_1', 'level_2', 'level_3', 'level_4', 'level_5', 'level_6', 'level_7']
 input_data_pd['combined'] = ''
 
 for i in hierarchy_col:
-  input_data_pd['combined'] = input_data_pd['combined'].astype(str) +'**'+ input_data_pd[i].astype(str)
+    input_data_pd['combined'] = input_data_pd['combined'].astype(str) +'**'+ input_data_pd[i].astype(str)
 
 input_data_pd['combined'] = input_data_pd['combined'].apply(lambda x: re.sub(r'.*Best Buy', 'Best Buy', x))
 
@@ -42,12 +38,12 @@ tree_data = input_data_pd['combined'].unique()
 
 
 #Clean Errors in the raw data
-for i in range(len(tree_data)):
-  tree_data[i] = unicode(tree_data[i], errors='ignore')
+#for i in range(len(tree_data)):
+#tree_data[i] = unicode(tree_data[i], errors='ignore')
 
 levels = []
 for i in range(0,n_levels):
-  levels.append([])
+    levels.append([])
 total_level = 0
 
 
@@ -55,15 +51,15 @@ total_level = 0
 pair_len = []
 for i in range(len(tree_data)):  
   
-  current_data_pre = tree_data[i].split("**")
-  current_data = []
-  for i in current_data_pre:
-    if i not in '':
-      current_data.append(i)
+    current_data_pre = tree_data[i].split("**")
+    current_data = []
+    for i in current_data_pre:
+        if i not in '':
+            current_data.append(i)
 
-  for i in range(n_levels):
-    if len(current_data) > i and current_data[i] not in levels[i]:
-      levels[i].append(current_data[i])
+    for i in range(n_levels):
+        if len(current_data) > i and current_data[i] not in levels[i]:
+            levels[i].append(current_data[i])
       
       
       
@@ -71,7 +67,7 @@ for i in range(len(tree_data)):
 data_matrix = [['Level', 'Category Count']]
 
 for i in range(n_levels):
-  data_matrix.append(['Level %d' % (i+1), len(levels[i])])   
+    data_matrix.append(['Level %d' % (i+1), len(levels[i])])   
 
 #data_matrix
 table = ff.create_table(data_matrix)
@@ -94,43 +90,51 @@ root_node_counter = 0
 edge_list = []
 
 for i in range(len(tree_data)):
-  current_data = tree_data[i].split("**")
-  current_data = filter(None, current_data)
-
+    temp = tree_data[i].split("**")
+#current_data = filter(None, current_data)
+    current_data = []
+    for i in temp:
+        if i != '':
+            current_data.append(i)
   
-  ##Update
-  if current_data[0] not in root_node_list and current_data[0] != '':
-    root_node_list.append(current_data[0])
-    tracker[root_node_counter] = [current_data[0]]
-    root_node_counter += 1
+##Update
+    if current_data[0] not in root_node_list and current_data[0] != '':
+        root_node_list.append(current_data[0])
+        tracker[root_node_counter] = [current_data[0]]
+        root_node_counter += 1
   
   
-  location = 0
-  for j in range(len(current_data) - 1):
+    location = 0
+    for j in range(len(current_data) - 1):
     
     #Incrementing location to match the number with the 
     #Hireachical path
-    if j > 0:
-      location += len(levels[j-1])
+        if j > 0:
+            location += len(levels[j-1])
     
     #Find location in the list to update the coordinate for the pair
-    a = levels[j].index(current_data[j]) + location
-    b = levels[j+1].index(current_data[j+1]) + location + len(levels[j])
+   
+        a = levels[j].index(current_data[j]) + location
+        b = levels[j+1].index(current_data[j+1]) + location + len(levels[j])
     
-    pairs = (a, b)
-    
+        pairs = (a, b)
 
-    if pairs not in edge_list:
-      edge_list.append(pairs)
+        if pairs not in edge_list:
+            edge_list.append(pairs)
       #tracker.append(current_data[:j+1])
     
     #Find way to find first records
-    if b not in tracker:
-      tracker[b] = current_data[:j+2]
+        if b not in tracker:
+            tracker[b] = current_data[:j+2]
 
 ################
 total_category = len(levels_v2)
-v_label = map(str, range(total_category))
+#v_label = map(str, range(total_category))
+
+v_label = []
+for i in range(1,total_category+1):
+    v_label.append(str(i))
+    
 G = Graph(n = total_category, directed=True)
 
 #edge_list
@@ -164,8 +168,8 @@ labels = v_label
 ###########################
 def make_annotations(pos, text, font_size=7, font_color='rgb(250,250,250)'):
     L=len(pos)
-    if len(text)!=L:
-        raise ValueError('The lists pos and text must have the same len')
+    #if len(textv)!=L:
+        #raise ValueError('The lists pos and text must have the same len')
     annotations = go.Annotations()
     for k in range(L):
         annotations.append(
