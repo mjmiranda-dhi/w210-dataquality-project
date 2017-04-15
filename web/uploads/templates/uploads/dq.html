@@ -24,10 +24,11 @@
 {% block content %}
     <h1 class="cover-heading">Upload your file.</h1>
     <p class="lead">Erratum will analyze your file to find outliers and provide you with before and after visualizations of the hierarchy structure</p>
+    <div id='bodyContent'>
     <p>
         <!-- Upload form. Note enctype attribute! -->
-        <form action="{% url "dq" %}" id="file-upload-form" method="post" enctype="multipart/form-data">
-        <!--<form id="file-upload-form" method="post" enctype="multipart/form-data">-->
+        <!--<form action="{% url "dq" %}" id="file-upload-form" method="post" enctype="multipart/form-data"> -->
+        <form id="file-upload-form" method="post" enctype="multipart/form-data">
              {% csrf_token %}
             <p>{{ form.non_field_errors }}</p>
             <p>{{ form.file.label_tag }} {{ form.file.help_text }}</p>
@@ -41,5 +42,6 @@
             <p><button type="submit" value="Upload" class="btn btn-lg btn-default"/>Upload</button></p>
          </form>
     </p>
+    </div>
 {% endblock %}
 

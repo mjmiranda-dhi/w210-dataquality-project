@@ -2,62 +2,25 @@
 
 {% block javascript %}
   <script>
-/*
-    $("#pre_viz").change(function() {
-        var previzthing = $(this).val();
-        console.log(previzthing);
-        $.ajax({
-            url: '{% url "preprocess_data" %}',
-            data: {
-                'pre_viz':'defpreviz' 
-            },
-            dataType: 'json',
-            success: function (data) {
-                if (jQuery.isEmptyObject(data)) {
-                    alert("A user with this username already exists.");
-            },
-            complete: function() {
-                //this is what gets called before exiting out of the ajax call
-                //like finally
-               $('#pre_viz').innerHTML='dummy'; //this can be any html
-            }
-        }
-      });
-    });
-*/
-    $(document).ready(function() {
-      //$('#pre_viz').html('dummy');
-      //do some reading on settimeout(function, msecs) read up on webworkers
-      // $.ajax({
-      //       url: '{% url "preprocess_data" %}',
-      //       success: function (data) {
-      //         console.log(data);
-      //       },
-      //       complete: function() {
-      //           //this is what gets called before exiting out of the ajax call
-      //           //like finally
-      //          $('#pre_viz').innerHTML='dummy'; //this can be any html
-      //       }
-      //   });
-    });
+     $("#includedContent").load("/tmp/viz_pre_table.html"); 
   </script>
 {% endblock javascript %}
 
 {% block content %}
   <div id="loading" class="clearfix">
-    Loading...
+    Preprocessing visualization
     <br>
-        <object type="text/html" data="{{pre_data.pre_viz}}" width="800px" height="600px" style="overflow:auto;">
+    <object type="text/html" data="{{pre_data.pre_viz}}" width="800px" height="600px" style="overflow:auto;">
     </object>
-    <!--<img src="{{pre_data.pre_viz}}"/>-->
     <br>
-    <img src="{{pre_data.pre_viz}}"/>
   </div>
-  <div id="results" class="hidden clearfix">
+  <div id="results" class="clearfix">
     <h1 class="cover-heading">RESULTS PAGE</h1>
     <p>
        <p>Uploaded file: {{filename}}</p>
-       <div id='pre_viz'>nothingpreviz</div>
+       <div id="includedContent"></div>
+       <!--<div w3-include-html="{{pre_data.pre_viz}}"></div>-->
     </p>
   </div>
+
 {% endblock %}
