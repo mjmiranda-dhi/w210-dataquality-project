@@ -35,4 +35,4 @@ feature_df['i_DECS'] = iForest.decision_function(train_variables)
 
 # we may want to remove the features we generated before dropping to csv
 to_file_path = 'output.csv'
-feature_df.to_csv(to_file_path)
+feature_df.to_csv(to_file_path, index=False)
