@@ -1,9 +1,6 @@
 {% extends 'uploads/base.html' %}
 
 {% block javascript %}
-  <script>
-     $("#includedContent").load("/tmp/viz_pre_table.html"); 
-  </script>
 {% endblock javascript %}
 
 {% block content %}
@@ -20,7 +17,13 @@
        <p>Uploaded file: {{filename}}</p>
        <div id="includedContent"></div>
        <!--<div w3-include-html="{{pre_data.pre_viz}}"></div>-->
+       <p>
+        Download processed file: <a href="/static/img/output.csv">output.csv</a>
+       </p>
+
+    </object>
     </p>
   </div>
+
 
 {% endblock %}

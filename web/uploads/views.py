@@ -9,6 +9,12 @@ from . import backend
 import time
 import datetime
 
+#filedownloads
+import os, tempfile, zipfile
+from wsgiref.util import FileWrapper
+from django.conf import settings
+import mimetypes
+
 #for running model
 from . import apply_model
 
@@ -67,8 +73,9 @@ def dq(request):
             filehandler.write_file_to_disk(form_file, destination)
 
             #kickoff model run
-            pre_data = process_data(request)
+            model_data = process_data(request)
             #pre_data = 'dummy pre data'
+            print("model data", model_data)
 
             #generate pre-processing data viz
             pre_data = preprocess_data_viz(request)
@@ -78,7 +85,8 @@ def dq(request):
             #filehandler.process_file(form_file)
 
             #return HttpResponse('file written to ' + destination)
-            return render(request, 'uploads/results.html', {'form':form, 'filename':filename, 'pre_data':pre_data})
+            return render(request, 'uploads/results.html', 
+                {'form':form, 'filename':filename, 'pre_data':pre_data, 'model_data':model_data})
         else:
             print("This is some kind of error")
     else:
@@ -99,13 +107,23 @@ def about(request):
 def contact(request):
     return render(request, 'uploads/contact.html', {})
 
+def send_file(request):
+    filename     = "/static/img/output.csv" # Select your file here.
+    download_name ="output.csv"
+    wrapper      = FileWrapper(open(filename))
+    content_type = mimetypes.guess_type(filename)[0]
+    response     = HttpResponse(wrapper,content_type=content_type)
+    response['Content-Length']      = os.path.getsize(filename)    
+    response['Content-Disposition'] = "attachment; filename=%s"%download_name
+    return response
+
 def process_data(request):
     form_file = request.FILES['file']
     filename = form_file.name
     filepath = 'tmp/' + filename
 
     #lets try running the model here? does this need to be async?
-    apply_model.run(filepath)
+    apply_model.run_full(filepath)
     print("DONE RUNNING MODEL")
     #fake processing here
     # print("processing processing")
@@ -117,7 +135,10 @@ def process_data(request):
     #     'html': '<div>Hello World</div>'
     # }
     # time.sleep(5)
-    data = {}
+    data = {
+        'processed_filename':'/static/img/output.csv',
+        'testing_text':'this is sample model text'
+    }
     return data
 
 def preprocess_data_viz(request):
