@@ -21,13 +21,22 @@ plotly.offline.init_notebook_mode()
 input_data_pd = pd.read_csv("/Users/mshen/Desktop/Python Supercode/Graph/modified_input.csv", delimiter = ",", encoding='cp857')
 
 input_data_pd = input_data_pd.replace(np.nan,'', regex=True)
-hierarchy_col = ['level_1', 'level_2', 'level_3', 'level_4', 'level_5', 'level_6', 'level_7']
+hierarchy_col = ['level_1', 'level_2', 'level_3', 'level_4']
 input_data_pd['combined'] = ''
 
 for i in hierarchy_col:
     input_data_pd['combined'] = input_data_pd['combined'].astype(str) +'**'+ input_data_pd[i].astype(str)
 
 input_data_pd['combined'] = input_data_pd['combined'].apply(lambda x: re.sub(r'.*Best Buy', 'Best Buy', x))
+
+
+
+#Generating Initial First Table To Inspect Data
+table_0 = ff.create_table(input_data_pd.loc[:,['name', 'class','level_1','level_2', 'level_3', 'level_4']].head(10))
+table_0.layout.margin.update({'t':50, 'l':50})
+table_0.layout.update({'title': 'Sample Data'})
+#Use the code below if want to generate HTML instead
+plotly.offline.plot(table_0, filename='file_0.html')
 
 
 
@@ -71,7 +80,8 @@ for i in range(n_levels):
 
 #data_matrix
 table = ff.create_table(data_matrix)
-#iplot(table, filename='simple_table')
+table.layout.margin.update({'t':50, 'l':50})
+table.layout.update({'title': 'Unique values in each level of the hierarchy'})
 
 #Use the code below if want to generate HTML instead
 plotly.offline.plot(table, filename='file.html')
