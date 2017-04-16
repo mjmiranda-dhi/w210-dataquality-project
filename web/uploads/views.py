@@ -79,14 +79,15 @@ def dq(request):
 
             #generate pre-processing data viz
             pre_data = preprocess_data_viz(request)
-            
+            post_data = postprocess_data_viz(model_data['processed_filename'])            
 
             #process file: maybe this will be the handler for showing the progress bar or something
             #filehandler.process_file(form_file)
 
             #return HttpResponse('file written to ' + destination)
             return render(request, 'uploads/results.html', 
-                {'form':form, 'filename':filename, 'pre_data':pre_data, 'model_data':model_data})
+                {'form':form, 'filename':filename, 'pre_data':pre_data,
+                'model_data':model_data, 'post_data':post_data})
         else:
             print("This is some kind of error")
     else:
@@ -136,7 +137,7 @@ def process_data(request):
     # }
     # time.sleep(5)
     data = {
-        'processed_filename':'/static/img/output.csv',
+        'processed_filename':'uploads/static/img/output.csv',
         'testing_text':'this is sample model text'
     }
     return data
@@ -145,7 +146,17 @@ def preprocess_data_viz(request):
     form_file = request.FILES['file']
     filename = form_file.name
     filepath = 'tmp/' + filename
-    
+    stats_filename = 'viz_pre_table.html'
+    graph_filename = 'viz_pre_tree_graph.html'
+    return viz_process_data(filepath, stats_filename, graph_filename)
+
+def postprocess_data_viz(filepath):
+    print("POSTPROCESS FILEPATH", filepath)
+    stats_filename = 'viz_post_table.html'
+    graph_filename = 'viz_post_tree_graph.html'
+    return viz_process_data(filepath, stats_filename, graph_filename)
+
+def viz_process_data(filepath, stats_filename, graph_filename):
     #1 Load data and structure for further process
     #Please change your director for the input files
     input_data_pd = pd.read_csv(filepath, delimiter = ",")
@@ -198,7 +209,8 @@ def preprocess_data_viz(request):
 
     #Use the code below if want to generate HTML instead
                             #NOTE: need to write to uploads/static
-    plotly.offline.plot(table, filename='uploads/static/img/viz_pre_table.html', auto_open=False)
+    write_stats_filename = 'uploads/static/img/' + stats_filename 
+    plotly.offline.plot(table, filename=write_stats_filename, auto_open=False)
     #TODO eventually this needs to be loaded and displayed, how????
     #time.sleep(10)    
 
@@ -340,15 +352,16 @@ def preprocess_data_viz(request):
 
     #iplot(fig, filename='Graph_Plot')
 
-    plotly.offline.plot(fig, filename='uploads/static/img/viz_pre_tree_graph.html', auto_open=False)
+    write_graph_filename = 'uploads/static/img/' + graph_filename
+    plotly.offline.plot(fig, filename=write_graph_filename, auto_open=False)
 
     data = {
         # NOTE: to display, we need to use /static/img not uploads/static/img
-        'pre_stats': '/static/img/viz_pre_table.html',
-        'pre_viz': '/static/img/viz_pre_tree_graph.html',
+        'stats': '/static/img/'+stats_filename,
+        'graph': '/static/img/'+graph_filename,
         'html': '<div>Hello World</div>'
     }
-    time.sleep(15)
+    time.sleep(5)
 
     print(data)
     return data

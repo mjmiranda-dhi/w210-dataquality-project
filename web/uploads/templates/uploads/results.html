@@ -7,9 +7,18 @@
   <div id="loading" class="clearfix">
     Preprocessing visualization
     <br>
-    <object type="text/html" data="{{pre_data.pre_stats}}" width="800px" height="400px" style="overflow:auto;">
+    <object type="text/html" data="{{pre_data.stats}}" width="800px" height="400px" style="overflow:auto;">
     </object>
-    <object type="text/html" data="{{pre_data.pre_viz}}" width="800px" height="600px" style="overflow:auto;">
+    <object type="text/html" data="{{pre_data.graph}}" width="800px" height="600px" style="overflow:auto;">
+       </object>
+    <br>
+  </div>
+  <div id="post_data" class="clearfix">
+    Postprocessing visualization
+    <br>
+    <object type="text/html" data="{{post_data.stats}}" width="800px" height="400px" style="overflow:auto;">
+    </object>
+    <object type="text/html" data="{{post_data.graph}}" width="800px" height="600px" style="overflow:auto;">
        </object>
     <br>
   </div>
