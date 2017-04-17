@@ -161,7 +161,7 @@ def viz_process_data(filepath, stats_filename, graph_filename):
     #Please change your director for the input files
     input_data_pd = pd.read_csv(filepath, delimiter = ",")
     input_data_pd = input_data_pd.replace(np.nan,'', regex=True)
-    hierarchy_col = ['level_1', 'level_2', 'level_3', 'level_4', 'level_5', 'level_6', 'level_7']
+    hierarchy_col = ['level_1', 'level_2', 'level_3', 'level_4'] #, 'level_5', 'level_6', 'level_7']
     input_data_pd['combined'] = ''
 
     for i in hierarchy_col:
@@ -176,8 +176,8 @@ def viz_process_data(filepath, stats_filename, graph_filename):
 
 
     # #Clean Errors in the raw data
-    # for i in range(len(tree_data)):
-    #     tree_data[i] = unicode(tree_data[i], errors='ignore')
+    #for i in range(len(tree_data)):
+    #    tree_data[i] = unicode(tree_data[i], errors='ignore')
 
     levels = []
     for i in range(0,n_levels):
@@ -205,6 +205,8 @@ def viz_process_data(filepath, stats_filename, graph_filename):
 
     #data_matrix
     table = ff.create_table(data_matrix)
+    table.layout.margin.update({'t':50, 'l':50})
+    table.layout.update({'title': 'Unique values in each level of the hierarchy'})
     #iplot(table, filename='simple_table')
 
     #Use the code below if want to generate HTML instead
