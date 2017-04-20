@@ -2,13 +2,18 @@ import model_functions
 import pandas as pd
 from sklearn.ensemble import IsolationForest
 
-input_file_path = '' #path to users file
+input_file_path = 'master_products_5per_error.csv' #path to users file
 
 # we may want to pass read_csv settings to user
 # get delimiter? escape character?
-input_df = pd.read_csv(input_file_path)
-print('Read file of shape: {0}'.format(input_df.shape))
+raw_df = pd.read_csv(input_file_path)
+print('Read file of shape: {0}'.format(raw_df.shape))
 
+# only using the hierarchy columns for evaluation
+hier_cols = [col for col in raw_df.columns if 'train_level' in col]
+
+input_df = raw_df[hier_cols].copy(deep=True)
+                                  
 # summary_df contains one record per column in input
 # SZ_ values summarize number of records associated w/ each unique value
 summary_df = model_functions.generate_col_summary(input_df)
@@ -36,3 +41,15 @@ feature_df['i_DECS'] = iForest.decision_function(train_variables)
 # we may want to remove the features we generated before dropping to csv
 to_file_path = 'output.csv'
 feature_df.to_csv(to_file_path, index=False)
+
+blend_df = raw_df.merge(feature_df, how='inner', left_index=True, right_index=True)
+blend_df['train_result'] = blend_df.train_status == 'Correct Record'
+                                  
+prec = blend_df[(blend_df.train_result == False) & (blend_df.i_PREDICT == -1)].shape[0] / blend_df[(blend_df.i_PREDICT == -1)].shape[0]
+print('Precision: {0}%'.format(round(100*prec)))
+
+recall = blend_df[(blend_df.train_result == False) & (blend_df.i_PREDICT == -1)].shape[0] / blend_df[(blend_df.train_result == False)].shape[0]
+print('Recall {0}%'.format(round(100*recall)))
+
+f_score = 2 * ((prec * recall) / (prec + recall))
+print('F-Score: {0}'.format(round(100*f_score)))                                  
