@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>ERRATUM.IO</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        {% include 'head_css.html' %}
+
+        <script src="{% static "js/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
+    </head>
+    <body>
+    	<div class="loader">
+    		<div class="spinner">
+			  <div class="double-bounce1"></div>
+			  <div class="double-bounce2"></div>
+			</div>
+    	</div>
+				
+    	{% include 'navbar.html' %}
+
+		<div class="main-container">
+		<section class="no-pad clearfix">
+				
+				<div class="col-md-6 col-sm-12 no-pad">
+				
+					<div class="feature-box">
+					
+						<div class="background-image-holder overlay">
+							<img class="background-image" alt="Background Image" src="{% static "img/box1.jpg" %}">
+						</div>
+						
+						<div class="inner">
+							<span class="alt-font text-white">LOAD YOUR DATA HERE</span>
+							<h1 class="text-white">Load the thing with the Angular stuff for data ingestion here-ish.</h1>
+							<p class="text-white">
+								This button isn't attached to anything yet.</p>
+							<a href="#" class="btn btn-primary btn-white">Upload Data</a>
+						</div>
+					</div>
+				
+				</div>
+				
+				<div class="col-md-6 col-sm-12 no-pad">
+				
+					<div class="feature-box">
+					
+						<div class="background-image-holder overlay">
+							<img class="background-image" alt="Background Image" src="{% static "img/slider1.jpg" %}">
+						</div>
+						
+						<div class="inner">
+							<span class="alt-font text-white">DESCRIBE YOUR DATA STRUCTURE HERE</span>
+							<h1 class="text-white">Load the other thing with the Angular stuff for letting the user do crap with fields.</h1>
+							<p class="text-white">
+								Be sure this is responsive.</p>
+						</div>
+					</div>
+				</div>
+				
+			</section>
+			
+			<section class="no-pad clearfix">
+				
+				<div class="col-md-4 col-sm-6 no-pad">
+					<div class="feature-box bg-muted">
+						<h1>Throw Tim's table here</h1>
+						<p>
+							Table with descriptive stats can go here. &nbsp;Make sure this is responsive on the y-axis, so it can grow if the table needs to be big. &nbsp;And whatnot.</p>
+
+					</div>
+				</div>
+				
+				<div class="col-md-4 col-sm-6 no-pad">
+					<div class="feature-box bg-primary">
+						<h1 class="text-white">Put the errors here.</h1>
+						<p class="text-white">
+							We're going with a darker color to highlight errors. &nbsp;We made this one brick red to call that out.</p>
+					</div>
+				</div>
+				
+				<div class="col-md-4 col-sm-6 no-pad">
+					<div class="feature-box bg-muted">
+						<h1>Put the corrections here.</h1>
+						<p>
+							This is going to look pretty good. &nbsp;Maybe I shouldn't use such a light color on the text, though. &nbsp;The eye needs to be drawn here.</p>
+					</div>
+				</div>
+				
+			</section>
+		</div>
+		
+		<div class="footer-container">
+		</div>
+				
+<!--		<script src="https://www.youtube.com/iframe_api"></script>  -->
+		<script src="{% static "js/jquery.min.js" %}"></script>
+        <script src="{% static "js/jquery.plugin.min.js" %}"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <script src="{% static "js/jquery.flexslider-min.js" %}"></script>
+        <script src="{% static "js/smooth-scroll.min.js" %}"></script>
+        <script src="{% static "js/skrollr.min.js" %}"></script>
+        <script src="{% static "js/spectragram.min.js" %}"></script>
+        <script src="{% static "js/scrollReveal.min.js" %}"></script>
+        <script src="{% static "js/isotope.min.js" %}"></script>
+        <script src="{% static "js/twitterFetcher_v10_min.js" %}"></script>
+        <script src="{% static "js/lightbox.min.js" %}"></script>
+        <script src="{% static "js/jquery.countdown.min.js" %}"></script>
+        <script src="{% static "js/scripts.js" %}"></script>
+    </body>
+</html>
+				

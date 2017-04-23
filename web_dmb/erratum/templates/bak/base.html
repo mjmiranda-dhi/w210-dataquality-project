@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<title>{% block title %}{% endblock %}</title>
+	<link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+</head>
+
+<body>
+	
+	<div id="content">
+	{% block content %}
+	{% endblock %}
+	</div>
+
+	<div id="sidebar">
+		<h2>Erratum.io</h2>
+		<p>Master data?  Managed.</p>
+
+	</div>
+
+</body>
+
+</html>
+

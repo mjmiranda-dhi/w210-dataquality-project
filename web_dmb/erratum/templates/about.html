@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>ERRATUM.IO</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        {% include 'head_css.html' %}
+
+        <script src="{% static "js/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
+    </head>
+    <body>
+    	<div class="loader">
+    		<div class="spinner">
+			  <div class="double-bounce1"></div>
+			  <div class="double-bounce2"></div>
+			</div>
+    	</div>
+		
+    	{% include 'navbar.html' %}
+
+		<div class="main-container">
+		<section class="skill-bars">
+		
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center">
+							<h1>So, how does all this work, anyway?</h1>
+							<p class="lead">
+								This didn't come about overnight. &nbsp;We did build this in only twelve weeks, though, and we were able to do it because we used the skills and education we gained in the UC Berkeley MIDS program. &nbsp;<br><br><b>Our goal with ERRATUM.IO isn't to build the greatest whizbang widget you've ever seen -- rather, we want to bring a little of the power of data science straight to you. </b>&nbsp;Sometimes it's a really good idea to let the experts handle the details, whether they fix your car, give you legal or medical advice, handle your taxes, or help you fix your data. &nbsp; That way, you can spend your time doing what's really important: <i>using</i>&nbsp;your data.<br><br> If you aren't sure how our process can help you scrub data, check out this section of our site on hierarchical data and the idea of master data.<br><br>Below are a few things that we've incorporated behind the scenes to make this whole thing work. &nbsp;Thank you to all the great people who build and maintain this fantastic software.</p>	
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-6 col-sm-12">
+							<div class="skills-left skills">
+								<h3>Design</h3>
+								<ul class="skills-ul">
+									<li>
+										<span>Machine Learning</span>
+										<div class="skill-bar-holder">
+											<div class="skill-capacity col-xs-11"></div>
+										</div>
+									</li>
+									
+									<li>
+										<span>Responsive Web Design</span>
+										<div class="skill-bar-holder">
+											<div class="skill-capacity col-xs-9"></div>
+										</div>
+									</li>
+									
+									<li>
+										<span>Visualization</span>
+										<div class="skill-bar-holder">
+											<div class="skill-capacity col-xs-7"></div>
+										</div>
+									</li>
+									
+									<li>
+										<span>Graphics </span>
+										<div class="skill-bar-holder">
+											<div class="skill-capacity col-xs-6"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="col-md-6 col-sm-12">
+							<div class="skills-right skills">
+								<h3>Develop</h3>
+								<ul class="skills-ul">
+									<li>
+										<span>Python / scikit-learn</span>
+										<div class="skill-bar-holder">
+											<div class="skill-capacity col-xs-11"></div>
+										</div>
+									</li>
+									
+									<li>
+										<span>Django / jQuery / Angular / Bootstrap</span>
+										<div class="skill-bar-holder">
+											<div class="skill-capacity col-xs-9"></div>
+										</div>
+									</li>
+									
+									<li>
+										<span>D3 (Data Driven Documents)</span>
+										<div class="skill-bar-holder">
+											<div class="skill-capacity col-xs-7"></div>
+										</div>
+									</li>
+									
+									<li>
+										<span>Photoshop &amp; Illustrator</span>
+										<div class="skill-bar-holder">
+											<div class="skill-capacity col-xs-6"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+		
+				</div>
+			</section>
+			
+			<section class="team-1">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center">
+							<h1>About Our Team</h1>
+						</div>
+					</div>
+					
+					<div class="row space-bottom-large">
+						<div class="col-sm-3">
+							<div class="team-1-member">
+								<img alt="Team Member" src="{% static "img/tim_cutout.png" %}">
+								<h2>Tim Weeks</h2>
+								<h5>Data Integration Specialist<br>@ Post Holdings</h5>
+								<p class="space-top-small">
+									Midwest-based data scientist with expertise in relational databases, Informatica ETL, Tableau, R, and the Python data ecosystem (Jupyter, pandas, scikit-learn).
+								</p>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="team-1-member">
+								<img alt="Team Member" src="{% static "img/max_cutout2.png" %}">
+								<h2>Max Shen</h2>
+								<h5>Senior Business Analyst<br>@ Poshmark<br></h5>
+								<p class="space-top-small">5+ years of experience in analytical roles demonstrating quantitative aptitude and communication skills.
+		<br>Experienced with statistical analysis (AB Testing, descriptive statistics, statistical inference), machine learning (K-Means, Logistic Regression, Tree, SVM, Neural Net) and data engineering.</p>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="team-1-member">
+								<img alt="Team Member" src="{% static "img/mj_cutout2.png" %}">
+								<h2>M. J. Miranda</h2>
+								<h5>Decision Analytics Architect<br>@ CyberSource</h5>
+								<p class="space-top-small">
+									Developer. Backend solutions, reconciliation, acquiring, APIs, data
+								</p>
+							</div>
+						</div><div class="col-sm-3">
+							<div class="team-1-member">
+								<img alt="Team Member" src="{% static "img/dmb_cutout2.png" %}">
+								<h2>D. M. Burt</h2>
+								<h5>Director, Analytics<br>@ Buckeye Health Plan</h5>
+								<p class="space-top-small">
+									20 years in analytics. &nbsp;That's a long time. &nbsp;Data scientist in health care with hands-on and (mid- and senior) managerial experience in statistics, programming, health care finance (budgeting &amp; forecasting), and so much more. &nbsp;Because 20 years.</p>
+							</div>
+						</div>
+						
+		
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="feature">
+								<span class="alt-font sub">©&nbsp;2017, d.M. BURT, M.J. MIRANDA, S. SHEN, R.T. WEEKS</span>
+								<p>
+									The entire content (including text and “look and feel” attributes) of this site is ©2017 D.M. Burt, M.J. Miranda, S. Shen, and R.T. Weeks. Any use of such content requires the written permission of these individuals. All rights reserved.<br><br>But don't be afraid to reach out and ask us if you can reference our work!
+								</p>
+							</div>
+						</div>
+					
+						<div class="col-sm-4">
+							<div class="feature">
+								<span class="alt-font sub">PRIVACY POLICY</span>
+								<p>
+									We neither rent nor sell your personal information in personally identifiable form to anyone, nor do we share the data you upload to anyone in any way. <br><br>We will work to protect the privacy of your account and information, but we cannot guarantee complete security--unauthorized entry, hardware or software failure, other other unforeseen factors may compromise the security of your information and/or the data you upload. &nbsp;<br><br>The data you upload are not protected by encryption. Please do not upload data that are considered Protected Health Information under HIPAA (Section 262 of the Health Insurance Portability and Accountability Act, P.L. 104-191).<br></p>
+							</div>
+						</div>
+					
+						<div class="col-sm-4">
+							<div class="feature">
+								<span class="alt-font sub">DISCLAIMERS</span>
+								<p>
+									We endeavor to protect the privacy of your account and other Personal Information we hold in our records, but unfortunately, we cannot guarantee complete security. Unauthorized entry or use, hardware or software failure, and other factors, may compromise the security of user information at any time.<br><br>ALL MATERIALS, INFORMATION, SOFTWARE, PRODUCTS, AND SERVICES INCLUDED ON OR AVAILABLE THROUGH THE SITE ARE PROVIDED “AS IS” AND “AS AVAILABLE” FOR YOUR USE. THE CONTENT IS PROVIDED WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NONINFRINGEMENT. THE OPERATORS OF THE SITE DO NOT WARRANT THAT THE CONTENT IS ACCURATE, RELIABLE OR CORRECT; THAT THE SITE WILL BE AVAILABLE AT ANY PARTICULAR TIME OR LOCATION; OR THAT ANY DEFECTS OR ERRORS WILL BE CORRECTED. YOUR USE OF THE SITE IS SOLELY AT YOUR RISK. BECAUSE SOME JURISDICTIONS DO NOT PERMIT THE EXCLUSION OF CERTAIN WARRANTIES, THESE EXCLUSIONS MAY NOT APPLY TO YOU.&nbsp;<br></p>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</section>
+		</div>
+		
+		<div class="footer-container">
+		</div>
+				
+<!--		<script src="https://www.youtube.com/iframe_api"></script>  -->
+		<script src="{% static "js/jquery.min.js" %}"></script>
+        <script src="{% static "js/jquery.plugin.min.js" %}"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <script src="{% static "js/jquery.flexslider-min.js" %}"></script>
+        <script src="{% static "js/smooth-scroll.min.js" %}"></script>
+        <script src="{% static "js/skrollr.min.js" %}"></script>
+        <script src="{% static "js/spectragram.min.js" %}"></script>
+        <script src="{% static "js/scrollReveal.min.js" %}"></script>
+        <script src="{% static "js/isotope.min.js" %}"></script>
+        <script src="{% static "js/twitterFetcher_v10_min.js" %}"></script>
+        <script src="{% static "js/lightbox.min.js" %}"></script>
+        <script src="{% static "js/jquery.countdown.min.js" %}"></script>
+        <script src="{% static "js/scripts.js" %}"></script>
+    </body>
+</html>
+				

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Erratum.io{% endblock %}
+
+{% block content %}
+	<h1>Erratum.io</h1>
+	{% for uploads in uploaded %}
+		<h2>
+			<a href="{{ uploads.get_absolute_url }}">
+				{{ uploads.fileOrig }}
+			</a>
+		</h2>
+		<p class="date">
+			Uploaded {{ uploads.timestamp}} by {{ uploads.userName }}
+		</p>
+	{% endfor %}
+{% endblock %}

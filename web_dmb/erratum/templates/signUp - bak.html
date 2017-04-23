@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>ERRATUM.IO</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        {% include 'head_css.html' %}
+
+        <script src="{% static "js/modernizr-2.6.2-respond-1.1.0.min.js" %}"></script>
+    </head>
+    <body>
+    	<div class="loader">
+    		<div class="spinner">
+			  <div class="double-bounce1"></div>
+			  <div class="double-bounce2"></div>
+			</div>
+    	</div>
+
+    	{% include 'navbar.html' %}
+		
+		<div class="main-container">
+			<header class="signup">
+					<div class="background-image-holder parallax-background">
+						<img class="background-image" alt="Relax.  This is going to be great." src="{% static "img/AdobeStock_113423452.jpeg" %}">
+					</div>
+					
+					<div class="container">
+						<div class="row space-bottom-medium">
+							<div class="col-md-10 col-md-offset-1 col-sm-12 text-center">
+								<h2 class="text-white">Welcome to ERRATUM.IO. &nbsp;Sit back and relax. &nbsp;You'll be cleaning up your data in no time.</h2>
+							</div>
+						</div>
+
+						<div class="row text-center">
+						
+							<div class="col-sm-12 text-center">
+								<div class="photo-form-wrapper clearfix">
+									<div class="row">
+
+										{% csrf_token %}
+										<div class="col-md-3 col-sm-4">
+											<input class="form-email" type="text" placeholder="Email Address">
+										</div>
+							
+										<div class="col-md-3 col-sm-4">
+											<input class="form-password" type="password" placeholder="Password">
+										</div>
+										
+										<div class="col-md-3 col-sm-4">
+											<input class="form-password2" type="password" placeholder="Confirm Password">
+										</div>
+										
+										<div class="col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-4 text-center">
+											<input type="submit" class="btn btn-primary btn-filled" value="Get Me Started">
+										</div>
+									</div>
+						
+								</div>
+								
+								<span class="text-white">Signup is free. &nbsp;Data set sizes are limited for now. &nbsp;To be fair, this is currently a class project.</span>
+							</div>
+						
+						</div>
+						
+					</div>	
+			</header>
+		</div>
+		
+		<div class="footer-container">
+		</div>
+				
+<!--		<script src="https://www.youtube.com/iframe_api"></script>  -->
+		<script src="{% static "js/jquery.min.js" %}"></script>
+        <script src="{% static "js/jquery.plugin.min.js" %}"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <script src="{% static "js/jquery.flexslider-min.js" %}"></script>
+        <script src="{% static "js/smooth-scroll.min.js" %}"></script>
+        <script src="{% static "js/skrollr.min.js" %}"></script>
+        <script src="{% static "js/spectragram.min.js" %}"></script>
+        <script src="{% static "js/scrollReveal.min.js" %}"></script>
+        <script src="{% static "js/isotope.min.js" %}"></script>
+        <script src="{% static "js/twitterFetcher_v10_min.js" %}"></script>
+        <script src="{% static "js/lightbox.min.js" %}"></script>
+        <script src="{% static "js/jquery.countdown.min.js" %}"></script>
+        <script src="{% static "js/scripts.js" %}"></script>
+    </body>
+</html>
+				
