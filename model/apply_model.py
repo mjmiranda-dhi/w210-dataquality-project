@@ -21,11 +21,12 @@ summary_df = model_functions.generate_col_summary(input_df)
 # copy the input dataframe and append columns we will use as features
 # more feature-generating functions could be added here
 feature_df = input_df.copy(deep=True)
+feature_df = model_functions.generate_tfidf_features(summary_df, feature_df)
 feature_df = model_functions.generate_size_features(summary_df, feature_df)
 feature_df = model_functions.generate_cumulative_size(summary_df, feature_df)
 
 # isolation forest model applied
-get_est_contamination = .025 #get from user input
+get_est_contamination = .05 #get from user input
 n_estimators = 100 #adjust based on input size. more is better
 
 iForest = IsolationForest(n_estimators=n_estimators, \
