@@ -26,7 +26,7 @@ activate erratum
 
 3. Install required packages.  If using conda, Django can be installed using `conda install django`.
 ```
-pip install -e django
+pip install django
 pip install django-progressbarupload
 pip install django-registration-redux
 pip install django-crispy-forms
