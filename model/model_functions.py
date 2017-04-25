@@ -1,4 +1,6 @@
 import pandas as pd
+from sklearn.decomposition import PCA
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 def generate_col_summary(dim_df):
 	sum_df = pd.DataFrame.from_dict({column: len(dim_df[column].unique()) for column in dim_df.columns}, orient='index')
@@ -52,3 +54,19 @@ def generate_cumulative_size(summary_df, feature_df):
 			size_df = size_series.to_frame(name='{0}-{1}_SIZE'.format(field_list[0],field_list[-1]))
 			feature_df = feature_df.merge(size_df, how='left',left_on=field_list, right_index=True)   
 	return feature_df
+
+def generate_tfidf_features(summary_df, feature_df):
+	pca = PCA(n_components=2)
+	    for i, field_name in enumerate(summary_df.FIELDS):
+	#         print(field_name)
+		if i == 0:
+	#         if summary_df.ix[i,'AVG_SPACE_SPLIT'] > 1:
+		    tfidf = TfidfVectorizer()
+		    tfidf_array = tfidf.fit_transform(feature_df[field_name]).toarray()
+	#             print(np.isinf(tfidf_array).sum())
+	#             tfidf_array[np.isnan(tfidf_array)] = 0
+		    pca_array  = pca.fit_transform(tfidf_array)
+	#             print(pca.explained_variance_ratio_)
+		    feature_df = feature_df.merge(pd.DataFrame(pca_array), how='inner', left_index=True,
+						  right_index=True)
+	return feature_df	
