@@ -3,7 +3,7 @@ from django.views.generic import View
 from django.contrib.auth import authenticate, login
 from .forms import signUpForm
 
-def index(request):
+def index_new(request):
 # Reserve functionality for recognizing we have a logged-in user.
 	if request.user.is_authenticated():
 		pass
@@ -15,7 +15,7 @@ def index(request):
 	return render(request, "home.html", context)
 
 
-def about(request):
+def about_new(request):
 # Reserve functionality for recognizing we have a logged-in user.
 	if request.user.is_authenticated():
 		pass
@@ -27,7 +27,7 @@ def about(request):
 	return render(request, "about.html", context)
 
 
-def hierarchical(request):
+def hierarchical_new(request):
 # Reserve functionality for recognizing we have a logged-in user.
 	if request.user.is_authenticated():
 		pass
@@ -39,7 +39,7 @@ def hierarchical(request):
 	return render(request, "hierarchical.html", context)
 
 
-def signUp(request):
+def signUp_new(request):
 # Reserve functionality for recognizing we have a logged-in user.
 	if request.user.is_authenticated():
 		pass
@@ -54,7 +54,7 @@ def signUp(request):
 
 
 # Placeholder until upload functionality is tied to demo.html
-def demo(request):
+def demo_new(request):
 # Reserve functionality for recognizing we have a logged-in user.
 	if request.user.is_authenticated():
 		pass

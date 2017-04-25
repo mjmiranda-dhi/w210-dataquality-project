@@ -1,0 +1,47 @@
+{% extends 'uploads/base.html' %}
+{% load progress_bar %}
+
+{% block javascript %}
+    <script>
+        var selectedFile = $('#id_file').get(0).files[0];
+        document.getElementById("id_file").onchange= function () {
+            var reader = new FileReader();
+            var fname = $('#id_file').val()
+            console.log(fname);
+            //now we need to change some dumb element to not be hidden and show filename
+            var fname_parts = fname.split(/[\\,]+/);
+            console.log(fname_parts)
+
+            $("#myFilenameValue").text(fname_parts[fname_parts.length-1]);
+            $("#myFilenameValue").attr("hidden",false);
+        };
+
+        //for whatever reason, progressBar is always hidden, so forcing it to display: mm
+        $("#progressBar").attr("hidden","false");
+    </script>
+{% endblock javascript %}
+
+{% block content %}
+    <h1 class="cover-heading">Upload your file.</h1>
+    <p class="lead">Erratum will analyze your file to find outliers and provide you with before and after visualizations of the hierarchy structure</p>
+    <div id='bodyContent'>
+    <p>
+        <!-- Upload form. Note enctype attribute! -->
+        <!--<form action="{% url "dq" %}" id="file-upload-form" method="post" enctype="multipart/form-data"> -->
+        <form id="file-upload-form" method="post" enctype="multipart/form-data">
+             {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.file.label_tag }} {{ form.file.help_text }}</p>
+            {{ form.file.errors }}
+            {{ form.file }} 
+            <h4 id="myFilenameValue" hidden=true></h4>
+          <!-- somehow we need the html form to use onchange="$('#upload-file-info').val($(this).val()); to disp filename -->
+            <!-- NOTE: need to change progress_bar hidden=False somehow -->
+            {% progress_bar %}
+            </p>
+            <p><button type="submit" value="Upload" class="btn btn-lg btn-default"/>Upload</button></p>
+         </form>
+    </p>
+    </div>
+{% endblock %}
+
