@@ -5,7 +5,7 @@
 {% block title %}<h2 class="text-white space-bottom-medium">{% trans "First, let's get you registered." %}</h2>{% endblock %}
 
 {% block content %}
-<form method="post" class="comment-form text-white" action="">
+<form method="post" class="comment-form" action="">
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" class="btn btn-primary btn-filled" value="{% trans 'Submit' %}" />

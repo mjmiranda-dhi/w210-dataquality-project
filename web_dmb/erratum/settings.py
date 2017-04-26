@@ -42,12 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    
     # Added for django-crispy-forms
     'crispy_forms',
+    'progressbarupload',
+    'rest_framework',
 
     # local apps
-    'upload',
+    'uploads',
+    
 ]
 
 MIDDLEWARE = [
