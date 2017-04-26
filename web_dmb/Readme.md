@@ -2,8 +2,8 @@
 # ERRATUM.IO
 ### DMB web development for W210 Capstone Project
 
-I've been working for a bit on the site design.  Plenty left to do:
-1. Clean up user registration (pages/links)
+I've been working for a bit on the new site design.  To do:
+1. Clean up user registration (pages/links).  Full functionality is not enabled until/unless we have an SMTP server for user account activation.
 2. Demo page:
   * `<div>` ids for targets
   * Target 1 (row 1): upload functionality
@@ -11,6 +11,7 @@ I've been working for a bit on the site design.  Plenty left to do:
   * Target 3 (row 2): Tim's file stat table
   * Target 4 (row 2): "before" visualization.  We may get more utility from just showing errors in a table.  Future functionality: add slider for user to specify level of confidence.
   * Target 5 (row 2): "after" visualization.  For continuity and comparability, this should be the same type of viz as the "before."
+  * Will need to have separate functionality for network visualization.  Perhaps pan/zoom in another bigger div, or (D3) link edges to tables in target 4/5.
 
 ## Installation
 
