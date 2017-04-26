@@ -2,10 +2,9 @@
 # ERRATUM.IO
 ### DMB web development for W210 Capstone Project
 
-I've been working for a bit on the new site design.  Left to do:
+I've been working for a bit on the site design.  Plenty left to do:
 1. Clean up user registration (pages/links)
-2. Move from using registration-redux simple backend (no activation required) to full backend.  Until we switch that over (for which we'll need a working SMTP server), some of the registration functionality won't work yet.
-3. Move from original site to Demo page:
+2. Demo page:
   * `<div>` ids for targets
   * Target 1 (row 1): upload functionality
   * Target 2 (row 1): field definition functionality (optional--was doing this in Angular browser-side)
@@ -27,7 +26,7 @@ activate erratum
 
 3. Install required packages.  If using conda, Django can be installed using `conda install django`.
 ```
-pip install django
+pip install -e django
 pip install django-progressbarupload
 pip install django-registration-redux
 pip install django-crispy-forms

@@ -11,6 +11,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta author="D.M. Burt">
 
         {% include 'head_css.html' %}
 
@@ -34,9 +35,10 @@
 						<div class="col-sm-12 text-center">
 							<ul class="blog-filters">
 								<li data-filter="*" class="active"><span>All</span></li>
-								<li data-filter=".branding"><span>HIERARCHICAL DATA</span></li>
-								<li data-filter=".development"><span>MASTER DATA</span></li>
+								<li data-filter=".hierarchicaldata"><span>HIERARCHICAL DATA</span></li>
+								<li data-filter=".masterdata"><span>MASTER DATA</span></li>
 								<li data-filter=".print"><span>THE COST OF ERRORS</span></li>
+								<li data-filter=".accuracy"><span>ACCURACY</span></li>
 							</ul>
 						</div>
 					</div>
@@ -46,10 +48,10 @@
 					<div class="row">
 						<div class="blog-masonry-container">
 						
-							<div class="col-md-4 col-sm-6 blog-masonry-item branding">
+							<div class="col-md-4 col-sm-6 blog-masonry-item hierarchicaldata">
 								<div class="item-inner">
 									<a href="https://en.wikipedia.org/wiki/Tree_(data_structure)" target="_blank">
-										<img alt="Blog Preview" src="{% static "img/330px-Binary_tree.svg.png" %}">
+										<img alt="Hierarchical data" src="{% static "img/330px-Binary_tree.svg.png" %}">
 									</a>
 									<div class="post-title">
 										<h2>It's a hierarchy! It's a tree! This is your data in a hierarchical structure.</h2>
@@ -63,15 +65,11 @@
 									</div>
 								</div>
 							</div>
-							
-							
-						
-							
-						
+
 							<div class="col-md-4 col-sm-6 blog-masonry-item print">
 								<div class="item-inner">
 									<a href="https://hbr.org/2016/09/bad-data-costs-the-u-s-3-trillion-per-year" target="_blank">
-										<img alt="Blog Preview" src="{% static "img/AdobeStock_131032788_small.png" %}">
+										<img alt="Bad data is expensive" src="{% static "img/AdobeStock_131032788_small.png" %}">
 									</a>
 									<div class="post-title">
 										<h2>Bad Data Costs the U.S. $3 Trillion per Year.</h2>
@@ -86,7 +84,7 @@
 								</div>
 							</div>
 							
-							<div class="col-md-4 col-sm-6 blog-masonry-item development">
+							<div class="col-md-4 col-sm-6 blog-masonry-item masterdata">
 								<div class="item-inner quote-post">
 									<div class="post-title">
 										<h1>Master Data Management?</h1>
@@ -97,10 +95,12 @@
 										<a href="https://en.wikipedia.org/wiki/Master_data_management" class="link-text" target="_blank">Read More</a>
 									</div>
 								</div>
-							</div><div class="col-md-4 col-sm-6 blog-masonry-item development">
+							</div>
+
+							<div class="col-md-4 col-sm-6 blog-masonry-item masterdata">
 								<div class="item-inner">
 									<a href="https://msdn.microsoft.com/en-us/library/bb190163.aspx#mdm04_topic4" class="inner-link" target="_blank">
-										<img alt="Blog Preview" src="{% static "img/AdobeStock_71313802_small.png" %}">
+										<img alt="MS Master Data Management" src="{% static "img/AdobeStock_71313802_small.png" %}">
 									</a>
 									<div class="post-title">
 										<h2>The What, Why, and How of Master Data Management</h2>
@@ -113,20 +113,22 @@
 										<a href="https://msdn.microsoft.com/en-us/library/bb190163.aspx#mdm04_topic4" class="link-text inner-link" target="_blank">Read More</a>
 									</div>
 								</div>
-							</div><div class="col-md-4 col-sm-6 blog-masonry-item branding">
+							</div>
+
+							<div class="col-md-4 col-sm-6 blog-masonry-item accuracy">
 								<div class="item-inner">
-									<a href="https://en.wikipedia.org/wiki/Hierarchical_database_model" target="_blank">
-										<img alt="Blog Preview" src="{% static "img/AdobeStock_107129498_small.png" %}">
+									<a href="#" target="_blank">
+										<img alt="Good recall is important" src="{% static "img/prec_recall_small.png" %}">
 									</a>
 									<div class="post-title">
-										<h2>The hierarchical data model: an easier read.</h2>
+										<h2>So, How Accurate Are We, Anyway?</h2>
 										<p>
-											This is perhaps a more approachable explanation of a hierarchical data structure. It's also from Wikipedia, but keeps the explanation short and sweet.&nbsp;</p>
+											 Having precision and recall like this means you're going to find those errors more efficiently.&nbsp;</p>
 										<div class="post-meta">
 											<span class="sub alt-font"> </span>
-											<span class="sub alt-font">WIKIPEDIA</span>
+											<span class="sub alt-font">ERRATUM.IO</span>
 										</div>
-										<a href="https://en.wikipedia.org/wiki/Hierarchical_database_model" class="link-text" target="_blank">Read More</a>
+										<a href="https://en.wikipedia.org/wiki/Precision_and_recall" class="link-text" target="blank">Read More</a>
 									</div>
 								</div>
 							</div>

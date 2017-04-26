@@ -3,38 +3,45 @@
 {% block javascript %}
 {% endblock javascript %}
 
-{% block content %}
+
+
+
+
+ {% block content %}
+ <div class="inner">
   <div id="loading" class="clearfix">
     Preprocessing visualization
     <br>
-    <object type="text/html" data="{{pre_data.stats}}" width="800px" height="400px" style="overflow:auto;">
-    </object>
-    <object type="text/html" data="{{pre_data.graph}}" width="800px" height="600px" style="overflow:auto;">
-       </object>
+    <div class="basic">
+      {% include "master_products_5per_modified_viz_pre_table.html" %}
+    </div>
+    <br>
+    <div class="basic">
+      {% include "master_products_5per_modified_viz_pre_tree_graph.html" %}
+    </div>
     <br>
   </div>
   <div id="post_data" class="clearfix">
     Postprocessing visualization
     <br>
-    <object type="text/html" data="{{post_data.stats}}" width="800px" height="400px" style="overflow:auto;">
-    </object>
-    <object type="text/html" data="{{post_data.graph}}" width="800px" height="600px" style="overflow:auto;">
-       </object>
+    <div class="basic">
+      {% include "master_products_5per_modified_file_stat.html" %}
+    </div>
     <br>
   </div>
   <div id="results" class="clearfix">
-    <!--<h1 class="cover-heading">RESULTS PAGE</h1>-->
+    <h1 class="cover-heading">RESULTS PAGE</h1>
     <p>
        <p>Uploaded file: {{filename}}</p>
        <div id="includedContent"></div>
-       <!--<div w3-include-html="{{pre_data.pre_viz}}"></div>-->
+       <div w3-include-html="{{pre_data.pre_viz}}"></div>
        <p>
-        Download processed file: <a href="/static/img/output.csv">output.csv</a>
+        Download processed file: <a href="{{ '/media/master_products_5per_modified_model_output.csv' }}">output.csv</a>
        </p>
 
     </object>
     </p>
   </div>
-
+</div>
 
 {% endblock %}

@@ -17,7 +17,7 @@ def run_full(input_file_path):
 
     # we may want to pass read_csv settings to user
     # get delimiter? escape character?
-    input_df = pd.read_csv(input_file_path)
+    input_df = pd.read_csv(input_file_path, quotechar="\"")
     print('Read file of shape: {0}'.format(input_df.shape))
 
     # summary_df contains one record per column in input

@@ -36,6 +36,7 @@ urlpatterns = [
 	url(r'^uploads/', include('uploads.urls', namespace='uploads', app_name='uploads')),
 
     # Added for django-registration-redux (v1.5)
+    url(r'^accounts/profile', erratum_views.index_new, name='index_new'),
     url(r'^accounts/', include('registration.backends.simple.urls')),
 
     url(r'^uploads/$', uploads_views.index, name='index'),
@@ -50,6 +51,6 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = 'ERRATUM.IO Administration'

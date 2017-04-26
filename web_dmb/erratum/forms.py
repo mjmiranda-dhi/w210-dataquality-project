@@ -9,3 +9,6 @@ class signUpForm(forms.ModelForm):
 		model = User
 		fields = ['email', 'password']
 
+
+class DocumentForm(forms.Form):
+    file = forms.FileField(label='Select a file')

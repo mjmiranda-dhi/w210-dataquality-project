@@ -4,6 +4,14 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> 
+
+
+<!--
+
+ NOT YET IMPLEMENTED : THIS IS TO REPLACE EXISTING SITE
+
+-->
+
 <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
@@ -11,6 +19,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta author="D.M. Burt">
 
         {% include 'head_css.html' %}
 
@@ -29,7 +38,7 @@
 		<div class="main-container">
 		<section class="no-pad clearfix">
 				
-				<div class="col-md-6 col-sm-12 no-pad">
+				<div class="col-md-3 col-sm-12 no-pad">
 				
 					<div class="feature-box">
 					
@@ -38,19 +47,19 @@
 						</div>
 						
 						<div class="inner">
-							<span class="alt-font text-white">LOAD YOUR DATA HERE</span>
-							<h1 class="text-white">Put the file upload with progressbarupload.</h1>
+							<span class="alt-font text-white">LOAD YOUR DATA</span>
+							<h1 class="text-white">Please select a file for upload.</h1>
 							<!-- <p class="text-white">
 								This button isn't attached to anything yet.</p> -->
-							<a href="#" class="btn btn-primary btn-white">Upload Data</a>
+							<a href="uploads/dq" class="btn btn-primary btn-white">Upload Data</a>
 						</div>
 					</div>
 				
 				</div>
 				
-				<div class="col-md-6 col-sm-12 no-pad">
+				<div class="col-md-9 col-sm-12 no-pad embed-responsive">
 				
-					<div class="feature-box">
+<!--					<div class="feature-box">
 					
 						<div class="background-image-holder overlay">
 							<img class="background-image" alt="Background Image" src="{% static "img/slider1.jpg" %}">
@@ -58,41 +67,198 @@
 						
 						<div class="inner">
 							<span class="alt-font text-white">VISUALIZATION OF THE DATA STRUCTURE</span>
-							<h1 class="text-white">Put Max's visualization here.</h1>
-							<!-- <p class="text-white">
-								Be sure this is responsive.</p> -->
-						</div>
-					</div>
+							<h1 class="text-white">2) A visualization of your data will be here.</h1>
+
+							-->
+
+							<!-- TRY TO EMBED A COPY OF MAX'S NETWORK VISUALIZATION -->
+							<iframe width="1200" height="395" frameborder="0" scrolling="no" src="https://plot.ly/~dmburt/3.embed"></iframe>
+							
+						
+				<!--		</div> 
+					</div>          -->
 				</div>
 				
 			</section>
 			
 			<section class="no-pad clearfix">
 				
-				<div class="col-md-4 col-sm-6 no-pad">
-					<div class="feature-box bg-muted">
-						<h1>Throw Tim's table here</h1>
-						<p>
-							Table with descriptive stats can go here. &nbsp;Make sure this is responsive on the y-axis, so it can grow if the table needs to be big. &nbsp;And whatnot.</p>
+				<div class="col-md-6 col-sm-12 no-pad">
+					<div class="feature-box bg-muted table-responsive">
+						<span class="alt-font text-white">YOUR FILE STATISTICS</span>
+						<h1>Here are some summary stats regarding your data.</h1>
+						<table class="table table-hover">
+							<thead>
+							 <tr>
+							  <th>Field</th>
+							  <th>Unique Values</th>
+							  <th>Null Values</th>
+							  <th>Count</th>
+							  <th>Mean</th>
+							  <th>SD</th>
+							  <th>Min</th>
+							  <th>25pctl</th>
+							  <th>50pctl</th>
+							  <th>75pctl</th>
+							  <th>Max</th>
+							 </tr>
+							</thead>
+							 <tr>
+							  <td>Unnamed</td>
+							  <td>338,128</td>
+							  <td>0</td>
+							  <td>338,128</td>
+							  <td>1.0</td>
+							  <td>0.0</td>
+							  <td>1.0</td>
+							  <td>1.0</td>
+							  <td>1.0</td>
+							  <td>1.0</td>
+							  <td>1.0</td>
+							 </tr>
+							 <tr>
+							  <td>name</td>
+							  <td>287,271</td>
+							  <td>0</td>
+							  <td>287,271</td>
+							  <td>1.2</td>
+							  <td>3.6</td>
+							  <td>1.0</td>
+							  <td>1.0</td>
+							  <td>1.0</td>
+							  <td>1.0</td>
+							  <td>1,755.0</td>
+							 </tr>
+							 <tr>
+							  <td>regularPrice</td>
+							  <td>1,764</td>
+							  <td>0</td>
+							  <td>1,764</td>
+							  <td>191.7</td>
+							  <td>1,909.0</td>
+							  <td>1.0</td>
+							  <td>1.0</td>
+							  <td>2.0</td>
+							  <td>7.0</td>
+							  <td>45,533.0</td>
+							 </tr>
+							 <tr>
+							  <td>subclass</td>
+							  <td>1,039</td>
+							  <td>0</td>
+							  <td>1,039</td>
+							  <td>325.4</td>
+							  <td>2,555.4</td>
+							  <td>1.0</td>
+							  <td>3.0</td>
+							  <td>13.0</td>
+							  <td>71.5</td>
+							  <td>60,400.0</td>
+							 </tr>
+							 <tr>
+							  <td>level_4</td>
+							  <td>195</td>
+							  <td>0</td>
+							  <td>195</td>
+							  <td>1,734.0</td>
+							  <td>8,429.3</td>
+							  <td>15.0</td>
+							  <td>43.0</td>
+							  <td>162.0</td>
+							  <td>465.0</td>
+							  <td>99,584.0</td>
+							 </tr>
+							 <tr>
+							  <td>class</td>
+							  <td>178</td>
+							  <td>0</td>
+							  <td>178</td>
+							  <td>1,899.6</td>
+							  <td>19,127.7</td>
+							  <td>1.0</td>
+							  <td>7.0</td>
+							  <td>28.5</td>
+							  <td>259.8</td>
+							  <td>253,725.0</td>
+							 </tr>
+							 <tr>
+							  <td>level_3</td>
+							  <td>75</td>
+							  <td>0</td>
+							  <td>75</td>
+							  <td>4,508.4</td>
+							  <td>32,294.8</td>
+							  <td>52.0</td>
+							  <td>92.0</td>
+							  <td>369.0</td>
+							  <td>908.5</td>
+							  <td>280,298.0</td>
+							 </tr>
+							 <tr>
+							  <td>level_2</td>
+							  <td>16</td>
+							  <td>0</td>
+							  <td>16</td>
+							  <td>21,133.0</td>
+							  <td>69,459.3</td>
+							  <td>281.0</td>
+							  <td>2,062.0</td>
+							  <td>3,032.5</td>
+							  <td>6,362.0</td>
+							  <td>281,439.0</td>
+							 </tr>
+							 <tr>
+							  <td>department</td>
+							  <td>14</td>
+							  <td>0</td>
+							  <td>14</td>
+							  <td>24,152.0</td>
+							  <td>74,835.4</td>
+							  <td>107.0</td>
+							  <td>1,886.0</td>
+							  <td>4,219.0</td>
+							  <td>5,284.8</td>
+							  <td>283,848.0</td>
+							 </tr>
+							 <tr>
+							  <td>type</td>
+							  <td>6</td>
+							  <td>0</td>
+							  <td>6</td>
+							  <td>56,354.0</td>
+							  <td>114,576.6</td>
+							  <td>96.0</td>
+							  <td>2,474.0</td>
+							  <td>4,380.5</td>
+							  <td>33,859.3</td>
+							  <td>283,747.0</td>
+							 </tr>
+							 <tr>
+							  <td>level_1</td>
+							  <td>2</td>
+							  <td>0</td>
+							  <td>2</td>
+							  <td>169,064.0</td>
+							  <td>229,429.3</td>
+							  <td>6,833.0</td>
+							  <td>87,948.0</td>
+							  <td>169,064.0</td>
+							  <td>250,179.5</td>
+							  <td>331,295.0</td>
+							 </tr>
+							</table>
 
 					</div>
 				</div>
 				
-				<div class="col-md-4 col-sm-6 no-pad">
+				<div class="col-md-6 col-sm-12 no-pad">
 					<div class="feature-box bg-primary">
-						<h1 class="text-white">Put the errors here.</h1>
+						<h1 class="text-white">4) The Outliers</h1>
 						<p class="text-white">
-							We're going with a darker color to highlight errors. &nbsp;We made this one brick red to call that out.</p>
+							But are they errors?&nbsp;</p>
 					</div>
 				</div>
 				
-				<div class="col-md-4 col-sm-6 no-pad">
-					<div class="feature-box bg-muted">
-						<h1>Put the corrections here.</h1>
-						<p>
-							This is going to look pretty good. &nbsp;Maybe I shouldn't use such a light color on the text, though. &nbsp;The eye needs to be drawn here.</p>
-					</div>
-				</div>
 				
 			</section>
 		</div>

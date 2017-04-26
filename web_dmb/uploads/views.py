@@ -122,44 +122,85 @@ def process_data(request):
     form_file = request.FILES['file']
     filename = form_file.name
     filepath = 'tmp/' + filename
+    summary_df = None
+    demo = True
+    #tmp
+    if 'master_products_5per_modified.csv' in filename:
+        demo = True
 
     #lets try running the model here? does this need to be async?
-    apply_model.run_full(filepath)
+    if not demo:
+        summary_df = apply_model.run_full(filepath)
+        decimals = pd.Series([2, 2], index=['SZ_mean', 'SZ_std'])
+        summary_df = summary_df.round(decimals)
+
+        #Generating Initial First Table To Inspect Data
+        table_s = ff.create_table(summary_df)
+        table_s.layout.margin.update({'t':50, 'l':50})
+        table_s.layout.update({'title': 'Summary Statistics'})
+        #Use the code below if want to generate HTML instead
+        plotly.offline.plot(table_s, filename='/static/img/file_stat.html', auto_open=False)
+
     print("DONE RUNNING MODEL")
-    #fake processing here
-    # print("processing processing")
-    # pre_data = backend.preprocess_data("testfilename")
-    # print(pre_data)
-    # data = {
-    #     'pre_viz': pre_data.get('viz'),
-    #     'pre_stats': pre_data.get('stats'),
-    #     'html': '<div>Hello World</div>'
-    # }
-    # time.sleep(5)
-    data = {
-        'processed_filename':'uploads/static/img/output.csv',
-        'testing_text':'this is sample model text'
-    }
+
+    if not demo:
+        data = {
+            'processed_filename':'uploads/static/img/output.csv',
+            'model_summary':'uploads/static/img/static/img/master_products_5per_modified_file_stat.html',
+            'testing_text':'this is sample model text'
+        }
+    else:
+        data = {
+            'processed_filename':'uploads/static/img/master_products_5per_modified_model_output.csv',
+            'model_summary':'/static/img/master_products_5per_modified_file_stat.html',
+            'testing_text':'this is sample model text'
+        }
     return data
 
 def preprocess_data_viz(request):
     form_file = request.FILES['file']
     filename = form_file.name
     filepath = 'tmp/' + filename
+    demo = True
+    #mvp
+    if 'master_products_5per_modified.csv' in filename:
+        demo = True
+
     stats_filename = 'viz_pre_table.html'
     graph_filename = 'viz_pre_tree_graph.html'
-    return viz_process_data(filepath, stats_filename, graph_filename)
+    return viz_process_data(filepath, stats_filename, graph_filename, demo)
 
 def postprocess_data_viz(filepath):
     print("POSTPROCESS FILEPATH", filepath)
     stats_filename = 'viz_post_table.html'
     graph_filename = 'viz_post_tree_graph.html'
-    return viz_process_data(filepath, stats_filename, graph_filename)
+    demo = True
+    #mvp
+    if filepath == 'master_products_5per_modified.csv':
+        demo = True
+    return viz_process_data(filepath, stats_filename, graph_filename, demo)
 
-def viz_process_data(filepath, stats_filename, graph_filename):
+def viz_process_data(filepath, stats_filename, graph_filename, demo):
     #1 Load data and structure for further process
     #Please change your director for the input files
-    input_data_pd = pd.read_csv(filepath, delimiter = ",")
+    if demo:
+        if 'master_products_5per_modified' in filepath:
+            if "pre" in stats_filename:
+                data = {
+                    #MVP
+                    'stats': '/static/img/master_products_5per_modified_viz_pre_table.html',
+                    'graph': '/static/img/master_products_5per_modified_viz_pre_tree_graph.html',
+                }
+                return data
+            else:
+                data = {
+                    #MVP
+                    'stats': '/static/img/master_products_5per_modified_viz_post_table.html',
+                    'graph': '/static/img/master_products_5per_modified_viz_post_tree_graph.html',
+                }
+                return data
+
+    input_data_pd = pd.read_csv(open(filepath,'r'), delimiter = ",") #, encoding='cp857')
     input_data_pd = input_data_pd.replace(np.nan,'', regex=True)
     hierarchy_col = ['level_1', 'level_2', 'level_3', 'level_4'] #, 'level_5', 'level_6', 'level_7']
     input_data_pd['combined'] = ''
@@ -239,7 +280,7 @@ def viz_process_data(filepath, stats_filename, graph_filename):
                 current_data.append(i)
   
 ##Update
-        if current_data[0] not in root_node_list and current_data[0] != '':
+        if current_data and current_data[0] not in root_node_list and current_data[0] != '':
             root_node_list.append(current_data[0])
             tracker[root_node_counter] = [current_data[0]]
             root_node_counter += 1
