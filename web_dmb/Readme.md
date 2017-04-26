@@ -12,6 +12,8 @@ I've been working for a bit on the new site design.  To do:
   * Target 4 (row 2): "before" visualization.  We may get more utility from just showing errors in a table.  Future functionality: add slider for user to specify level of confidence.
   * Target 5 (row 2): "after" visualization.  For continuity and comparability, this should be the same type of viz as the "before."
   * Will need to have separate functionality for network visualization.  Perhaps pan/zoom in another bigger div, or (D3) link edges to tables in target 4/5.
+  
+For now, the demo functionality points to the legacy site.
 
 ## Installation
 
