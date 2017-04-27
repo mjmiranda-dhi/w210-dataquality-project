@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import re
 import plotly 
-plotly.tools.set_credentials_file(username='judofighter25', api_key='2peX3o9wbzRxT5vM2azA')
+plotly.tools.set_credentials_file(username='', api_key='')
 
 plotly.tools.set_config_file(world_readable=False,
                              sharing='private')
